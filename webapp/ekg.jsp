@@ -27,7 +27,8 @@ Pesel <input type="text" name="pesel" disabled="disabled" value="${pesel}" />
 			<center>
 			<%
    			String sAction = (String) request.getAttribute("result");
-   			if ( sAction != null && (sAction).equals("done")) { %>
+   			
+			if ( sAction != null && (sAction).equals("done")) { %>
 			 <table><tr><td width="200" rowspan="1"><img src="img/ekg.png" width="600" height="600"></td></tr></table> 		
 						<% } 
    			if ( sAction != null && (sAction).equals("error")) { %>
