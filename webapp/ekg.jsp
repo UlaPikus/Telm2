@@ -35,6 +35,7 @@ Pesel <input type="text" name="pesel" disabled="disabled" value="${pesel}" />
    			<img src="img/image.png" height="700" width="700">
 			<% } 
 			%>
+			
 			</center>
 					<%
    			String iAction = (String) request.getAttribute("fileerror");
