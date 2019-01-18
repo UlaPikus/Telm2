@@ -28,14 +28,16 @@ public class ekgServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int result;
+		//request.setAttribute("imie", imie);
+		//request.getRequestDispatcher("ekg.jsp").forward(request, response);
 		String description = request.getParameter("description");
-		String file = request.getParameter("file");
-		if (file != null) {
+		try {
 			Part filePart = request.getPart("file");
 			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 			InputStream fileContent = filePart.getInputStream();
 			if (fileContent != null) {
 				result = new method.datFileOpen().main(fileContent);
+				System.out.println(result);
 			} else {
 				result = 0;
 			}
@@ -47,8 +49,8 @@ public class ekgServlet extends HttpServlet {
 				request.getRequestDispatcher("ekg.jsp").forward(request, response);
 
 			}
-		}else {
-			request.setAttribute("message", "error");
+		}catch (Exception e) {
+			request.setAttribute("fileerror", "error");
 			request.getRequestDispatcher("ekg.jsp").forward(request, response);
 
 		}
