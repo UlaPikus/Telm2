@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <servlet>
+    <servlet-name>addPacjent</servlet-name>
+    <servlet-class>main.addPacjentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>selectPacjent</servlet-name>
+    <servlet-class>main.selectPacjentServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>ecg</servlet-name>
+  <servlet-class>main.ekgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addPacjent</servlet-name>
+    <url-pattern>/addpac</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>selectPacjent</servlet-name>
+    <url-pattern>/selectpac</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>ecg</servlet-name>
+  <url-pattern>/addecg</url-pattern>
+  </servlet-mapping>
+</web-app>
