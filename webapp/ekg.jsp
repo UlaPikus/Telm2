@@ -40,7 +40,6 @@ function drawCircle(val){
 			onClick="window.location='\selectPacjentWindow.jsp'">Zmien
 			pacjenta</button>
 		<button type="button">Otwórz istniejace badnia</button>
-		<button type="button">Zapisz</button>
 
 		<% String sAction = (String) request.getAttribute("result");
 	if ( sAction != null && (sAction).equals("done")) { %>
@@ -55,6 +54,14 @@ function drawCircle(val){
       };
       imageObj.src = "http://localhost:8080/Telm2/img/ekg.png?timestamp=" + new Date().getTime();
     </script>
+    <a id="downloadLnk" download="ekg.png">Pobierz</a>
+<script>
+function download() {
+    var dt = canvas.toDataURL('image/png');
+    this.href = dt;
+};
+downloadLnk.addEventListener('click', download, false);
+</script>
 		<br> Q
 		<button type=button
 			style="position: absolute; top: 16%; left: 2%; width: 20px; height: 20px; background: green;"
