@@ -57,7 +57,9 @@
    						if ( sAction != null && (sAction).equals("pesel")) { %>
    						<script> alert("Bledny PESEL");</script>
 						<% } 
-						%>
+						if (sAction != null && (sAction).equals("error")){%>
+						<script> alert("Blad");</script>
+						<%} %>
 					</div>
 					<div class="container-login100-form-btn m-t-20">
 						<button type="button" class="login100-form-btn" onClick="window.location='\addPacjentWindow.jsp'"> Dodaj pacjenta </button>

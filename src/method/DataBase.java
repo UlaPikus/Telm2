@@ -3,7 +3,9 @@ package method;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
@@ -49,21 +51,39 @@ public class DataBase {
 		return pacjentStatus;
 	}
 	
-	public static int selectByPesel(String pesel) throws IOException, SQLException {
+	public static String[] selectByPesel(String pesel) throws IOException, SQLException {
+		String out[] = new String[4]; 
 		int pacjentStatus = 0;
 		String p = pesel;
-		String query = "SELECT * FROM pacjent.dane VALUES (NULL, '" + n + "', '" + i + "', '"+p+"');";
+		String query = "SELECT * FROM pacjent.dane WHERE pesel = '" + p + "';";
 		Connection connect = DataBase.connection();
 		if (connect != null) {
 			try {
-				PreparedStatement prepStm = connect.prepareStatement(query);
-				prepStm.execute();
+				Statement stmt = connect.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
 				pacjentStatus = 1;
-			} catch (SQLException e) {
-				System.out.print(e);
-				pacjentStatus = -1;
-			}
-		}
-		return pacjentStatus;
+				out[0] = Integer.toString(pacjentStatus);
+				while (rs.next())
+			      {
+			        int id = rs.getInt("id");
+			        String nazwisko = rs.getString("nazwisko");
+			        String imie = rs.getString("imie");
+			        // print the results
+			        out[1] = Integer.toString(id);
+			        out[2] = nazwisko;
+			        out[3] = imie;
+			        System.out.println(id);
+			        System.out.println(imie);
+			        System.out.println(nazwisko);
+			      }
+			      stmt.close();
+			    }
+			    catch (Exception e)
+			    {
+			      System.err.println("Got an exception! ");
+			      System.err.println(e.getMessage());
+			    }
+			  }
+		return out;
 	}
 }

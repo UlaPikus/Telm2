@@ -72,7 +72,10 @@
    						if ( sAction != null && (sAction).equals("pesel")) { %>
    						<script> alert("Bledny PESEL. Popraw dane aby dodac pacjenta");</script>
 						<% } 
-						%>
+						if (sAction != null && (sAction).equals("error")){%>
+						<script> alert("Blad");</script>
+						<%} %>
+						
 					</div>
 					
 					<div class="container-login100-form-btn m-t-20">

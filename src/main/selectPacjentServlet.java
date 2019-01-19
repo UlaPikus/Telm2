@@ -38,12 +38,30 @@ public class selectPacjentServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String out[] = new String[4];
 		doGet(request, response);
-		
-		String nazwisko = request.getParameter("nazwisko");
-		String imie = request.getParameter("imie");
-		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.print(id);
+		String pesel = request.getParameter("pesel");
+		String imie = new String();
+		String nazwisko = new String();
+		int p1 = new method.peselCheck().check(pesel);
+		if (p1 == 0) {
+			request.setAttribute("message", "pesel");
+			request.getRequestDispatcher("selectPacjentWindow.jsp").forward(request, response);
+		}else {
+			Connection connect = new method.DataBase().connection();
+		try {
+			out = new method.DataBase().selectByPesel(pesel);
+			imie = out[3];
+			nazwisko = out[2];
+			request.setAttribute("imie", imie);
+			request.setAttribute("nazwisko", nazwisko);
+			request.setAttribute("pesel", pesel);
+			request.getRequestDispatcher("ekg.jsp").forward(request, response);
+		} catch (SQLException e) {
+			System.out.println(e);
+			request.setAttribute("message", "error");
+			request.getRequestDispatcher("selectPacjentWindow.jsp").forward(request, response);
+		}
 	}
-
+	}
 }
