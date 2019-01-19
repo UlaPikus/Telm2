@@ -26,7 +26,7 @@
 	<button type="button" >Otwórz istniejace badnia</button>
 	<% String sAction = (String) request.getAttribute("result");
 	if ( sAction != null && (sAction).equals("done")) { %>
-    <canvas id="myCanvas" width="700" height="400" style="position: absolute; top: 20%; left: 1%; border: 2px solid;"></canvas>
+    <canvas id="myCanvas" width="700" height="400" style="position: absolute; top: 20%; left: 10%; border: 2px solid;"></canvas>
     <script>
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
@@ -36,8 +36,17 @@
       };
       imageObj.src = 'img/ekg.png?t'+new Date().getTime();
     </script>
-     R <div style="position:absolute;top:15%;left:45%;width:10px;height:10px;background:green;" id="green" onclick="getPosition(e)"></div>
-    
+    <br>
+     Q <div style="position:absolute;top:15%;left:2%;width:10px;height:10px;background:green;" id="green" onclick="getPosition(e)"></div>
+     <br>
+     R <div style="position:absolute;top:18%;left:2%;width:10px;height:10px;background:blue;" id="blue" onclick="getPosition(e)"></div>
+     <br>
+     S <div style="position:absolute;top:21%;left:2%;width:10px;height:10px;background:red;" id="red" onclick="getPosition(e)"></div>
+     <br>
+     T <div style="position:absolute;top:24%;left:2%;width:10px;height:10px;background:yellow;" id="yellow" onclick="getPosition(e)"></div>
+     <br>
+     P <div style="position:absolute;top:27%;left:2%;width:10px;height:10px;background:orange;" id="orange" onclick="getPosition(e)"></div>
+     
     <% } 
 		if ( sAction != null && (sAction).equals("error")) { %>
 		<img src="img/image.png" height="700" width="700">
