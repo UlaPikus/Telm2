@@ -37,7 +37,6 @@ public class ekgServlet extends HttpServlet {
 			InputStream fileContent = filePart.getInputStream();
 			if (fileContent != null) {
 				result = new method.datFileOpen().main(fileContent);
-				System.out.println(result);
 			} else {
 				result = 0;
 			}

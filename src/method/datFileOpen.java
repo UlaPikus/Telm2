@@ -15,7 +15,7 @@ public class datFileOpen {
 	public static int main(InputStream stream) {
 		int out = 0;
 		BinaryIn StrumienBinarny = null; // strumien binarny, z ktorego bedziemy czytali po 12 bitow
-		int szer = 5000;
+		int szer = 1000;
 		int wys = 4096;
 
 		try {

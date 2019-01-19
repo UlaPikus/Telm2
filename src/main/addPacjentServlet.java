@@ -45,7 +45,10 @@ public class addPacjentServlet extends HttpServlet {
 			Connection connect = new method.DataBase().connection();
 			try {
 				int status = new method.DataBase().addPacjnet(nazwisko, imie, pesel);
-				response.sendRedirect("ekg.jsp");
+				request.setAttribute("imie", imie);
+				request.setAttribute("nazwisko", nazwisko);
+				request.setAttribute("pesel", pesel);
+				request.getRequestDispatcher("ekg.jsp").forward(request, response);
 			} catch (SQLException e) {
 				System.out.println(e);
 				request.setAttribute("message", "error");

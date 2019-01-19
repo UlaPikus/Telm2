@@ -2,12 +2,28 @@
 <html>
   <head>
     <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
     </style>
   </head>
+  <script>
+  window.onload = function()
+{
+	var canvas = document.getElementById('myCanvas');
+	canvas.addEventListener('mousedown', drawCircle, false);
+	}
+function drawCircle(val){
+	var canvas = document.getElementById('myCanvas');
+	var ctx = canvas.getContext('2d');
+	
+	x = event.pageX;
+	y = event.pageY;
+	
+	ctx.fillStyle = val;
+	ctx.beginPath();
+	ctx.arc(x-152,y-148,2,0,2*Math.PI);
+	ctx.stroke();
+	ctx.fill();
+}
+</script>
   <body>
   	<form action="addecg" method="post" enctype="multipart/form-data">
 
@@ -17,7 +33,6 @@
 		Pesel <input type="text" name="pesel" disabled="disabled"
 			value="${pesel}" /> <br> <input type="text" name="description" />
 		<input type="file" name="file" /> <input type="submit" /> <br>
-		<button type="button">Zapisz</button>
 		<button type="button" onClick="window.location='\start.jsp'">
 			Wroc do startu</button>
 		<button type="button"
@@ -34,18 +49,22 @@
       imageObj.onload = function() {
         context.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
       };
-      imageObj.src = 'img/ekg.png?t'+new Date().getTime();
+      imageObj.src = "http://localhost:8080/Telm2/img/ekg.png?timestamp=" + new Date().getTime();
     </script>
     <br>
-     Q <div style="position:absolute;top:15%;left:2%;width:10px;height:10px;background:green;" id="green" onclick="getPosition(e)"></div>
+     Q <button type = button style="position:absolute;top:16%;left:2%;width:20px;height:20px;background:green;" id="color" onClick = "drawCircle('green')" ></button>
      <br>
-     R <div style="position:absolute;top:18%;left:2%;width:10px;height:10px;background:blue;" id="blue" onclick="getPosition(e)"></div>
      <br>
-     S <div style="position:absolute;top:21%;left:2%;width:10px;height:10px;background:red;" id="red" onclick="getPosition(e)"></div>
+     R <button type = button style="position:absolute;top:21%;left:2%;width:20px;height:20px;background:blue;" id="color" onClick = "drawCircle('blue')" ></button>
      <br>
-     T <div style="position:absolute;top:24%;left:2%;width:10px;height:10px;background:yellow;" id="yellow" onclick="getPosition(e)"></div>
      <br>
-     P <div style="position:absolute;top:27%;left:2%;width:10px;height:10px;background:orange;" id="orange" onclick="getPosition(e)"></div>
+     S <button type = button style="position:absolute;top:26%;left:2%;width:20px;height:20px;background:red;" id="color" onClick = "drawCircle('red')" ></button>
+     <br>
+     <br>
+     T <button type = button style="position:absolute;top:31%;left:2%;width:20px;height:20px;background:yellow;" id="color" onClick = "drawCircle('yellow')" ></button>
+     <br>
+     <br>
+     P <button type = button style="position:absolute;top:36%;left:2%;width:20px;height:20px;background:orange;" id="color" onClick = "drawCircle('orange')" ></button>
      
     <% } 
 		if ( sAction != null && (sAction).equals("error")) { %>
