@@ -48,4 +48,22 @@ public class DataBase {
 		}
 		return pacjentStatus;
 	}
+	
+	public static int selectByPesel(String pesel) throws IOException, SQLException {
+		int pacjentStatus = 0;
+		String p = pesel;
+		String query = "SELECT * FROM pacjent.dane VALUES (NULL, '" + n + "', '" + i + "', '"+p+"');";
+		Connection connect = DataBase.connection();
+		if (connect != null) {
+			try {
+				PreparedStatement prepStm = connect.prepareStatement(query);
+				prepStm.execute();
+				pacjentStatus = 1;
+			} catch (SQLException e) {
+				System.out.print(e);
+				pacjentStatus = -1;
+			}
+		}
+		return pacjentStatus;
+	}
 }

@@ -39,6 +39,8 @@ function drawCircle(val){
 			onClick="window.location='\selectPacjentWindow.jsp'">Zmien
 			pacjenta</button>
 	<button type="button" >Otwórz istniejace badnia</button>
+		<button type="button" >Zapisz</button>
+	
 	<% String sAction = (String) request.getAttribute("result");
 	if ( sAction != null && (sAction).equals("done")) { %>
     <canvas id="myCanvas" width="700" height="400" style="position: absolute; top: 20%; left: 10%; border: 2px solid;"></canvas>
