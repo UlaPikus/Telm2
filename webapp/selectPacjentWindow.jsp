@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-	<title>Login V19</title>
+	<title>Wybierz pacjenta</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -52,15 +52,18 @@
 					
 					<div class="container-login100-form-btn m-t-20">
 						<button type="button" class="login100-form-btn" onClick="window.location='\start.jsp'"> Wroc </button>
-						<button type="button" onClick="window.location='\addPacjentWindow.jsp'"> Dodaj pacjenta </button>
-        				<%
+						<%
    						String sAction = (String) request.getAttribute("message");
    						if ( sAction != null && (sAction).equals("pesel")) { %>
    						<script> alert("Bledny PESEL");</script>
 						<% } 
 						%>
 					</div>
-		
+					<div class="container-login100-form-btn m-t-20">
+						<button type="button" class="login100-form-btn" onClick="window.location='\addPacjentWindow.jsp'"> Dodaj pacjenta </button>
+        				
+					</div>
+					
 				</form>
 			</div>
 		</div>
