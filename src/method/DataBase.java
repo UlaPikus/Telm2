@@ -72,9 +72,6 @@ public class DataBase {
 			        out[1] = Integer.toString(id);
 			        out[2] = nazwisko;
 			        out[3] = imie;
-			        System.out.println(id);
-			        System.out.println(imie);
-			        System.out.println(nazwisko);
 			      }
 			      stmt.close();
 			    }
